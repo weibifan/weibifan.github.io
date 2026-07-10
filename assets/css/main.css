@@ -194,24 +194,52 @@ h3 { font-size: 1em; }
 }
 
 .author__urls li {
-  margin-bottom: 2px;
+  white-space: nowrap;
+  margin-bottom: 1px;
 }
 
 .author__urls a {
-  color: #494e52;
-  display: inline-block;
+  display: block;
+  margin-bottom: 4px;
   padding: 2px 0;
+  color: #494e52;
+  font-size: 1em;
+  text-decoration: none;
 }
 
 .author__urls a:hover {
+  text-decoration: underline;
   color: #224b8d;
 }
 
-.author__urls i {
+.author__urls i,
+.author__urls .ai {
   width: 20px;
   text-align: center;
   margin-right: 2px;
-  color: #777;
+}
+
+/* Social icon colors (matching reference) */
+.social-icons .fa,
+.social-icons .ai {
+  color: #494e52;
+}
+.social-icons .fa-github,
+.social-icons .fa-github-alt,
+.social-icons .fa-github-square {
+  color: #171516;
+}
+.social-icons .fa-graduation-cap {
+  color: #494e52;
+}
+.social-icons .fa-envelope {
+  color: #494e52;
+}
+.social-icons .fa-map-marker {
+  color: #494e52;
+}
+.social-icons .fa-university {
+  color: #494e52;
 }
 
 /* ----- Main Content (Page) ----- */
