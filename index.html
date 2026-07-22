@@ -112,6 +112,15 @@
 
 
 
+    /* --- Team list --- */
+    .team-list { margin: 1em 0; display: flex; flex-direction: column; gap: 8px; }
+    .team-item { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 8px 14px; background: #fafbfc; border: 1px solid #eaecef; border-radius: 8px; }
+    .team-name { min-width: 180px; }
+    .team-role { color: #666; font-size: 0.88em; }
+    .team-links { font-size: 0.85em; margin-left: auto; }
+    .team-links a { color: #224b8d; text-decoration: none; }
+    .team-links a:hover { text-decoration: underline; }
+
     /* --- Demo cards --- */
     .demo-grid { display: flex; flex-wrap: wrap; gap: 16px; margin: 1em 0; }
     .demo-card { flex: 1 1 280px; background: #fafbfc; border: 1px solid #eaecef; border-radius: 10px; overflow: hidden; transition: box-shadow 0.2s; }
@@ -169,6 +178,7 @@
             <li class="masthead__menu-item"><a href="#awards"><span class="lang-zh">荣誉奖励</span><span class="lang-en">Awards</span></a></li>
             <li class="masthead__menu-item"><a href="#teaching"><span class="lang-zh">讲授课程</span><span class="lang-en">Teaching</span></a></li>
             <li class="masthead__menu-item"><a href="#demos"><span class="lang-zh">演示视频</span><span class="lang-en">Demos</span></a></li>
+            <li class="masthead__menu-item"><a href="#group"><span class="lang-zh">研究团队</span><span class="lang-en">Team</span></a></li>
           </ul>
           <div class="lang-toggle" id="langToggle" onclick="toggleLang()">
             <span class="active-lang" id="langZh">中文</span>
@@ -433,7 +443,43 @@
             </div>
           </div>
 
-        </section>
+          <!-- ========== Research Group ========== -->
+          <p><span class="anchor" id="group"></span></p>
+          <h1><i class="fas fa-users" style="margin-right:8px;"></i> <span class="lang-zh">研究团队</span><span class="lang-en">Research Group</span></h1>
+
+          <div class="team-list">
+            <div class="team-item">
+              <span class="team-name"><strong>刘均 (Jun Liu)</strong></span>
+              <span class="team-role"><span class="lang-zh">教授，博士生导师</span><span class="lang-en">Professor, Ph.D. Supervisor</span></span>
+              <span class="team-links">
+                <a href="https://gr.xjtu.edu.cn/liukeen" target="_blank">XJTU</a>
+              </span>
+            </div>
+            <div class="team-item">
+              <span class="team-name"><strong>张玲玲 (Lingling Zhang)</strong></span>
+              <span class="team-role"><span class="lang-zh">副教授，博士生导师</span><span class="lang-en">Associate Professor, Ph.D. Supervisor</span></span>
+              <span class="team-links">
+                <a href="https://zhang-lingling.github.io/" target="_blank">Homepage</a> ·
+                <a href="https://gr.xjtu.edu.cn/zhanglling" target="_blank">XJTU</a>
+              </span>
+            </div>
+            <div class="team-item">
+              <span class="team-name"><strong>马杰 (Jie Ma)</strong></span>
+              <span class="team-role"><span class="lang-zh">特聘研究员，副教授</span><span class="lang-en">Research Professor</span></span>
+              <span class="team-links">
+                <a href="https://dr-majie.github.io/" target="_blank">Homepage</a> ·
+                <a href="https://gr.xjtu.edu.cn/jiema" target="_blank">XJTU</a>
+              </span>
+            </div>
+            <div class="team-item">
+              <span class="team-name"><strong>王雅娴 (Yaxian Wang)</strong></span>
+              <span class="team-role"><span class="lang-zh">博士生</span><span class="lang-en">Ph.D. Candidate</span></span>
+              <span class="team-links">
+                <span class="lang-zh">（共同作者，多篇论文第一作者）</span>
+                <span class="lang-en">(Co-author, first author of multiple papers)</span>
+              </span>
+            </div>
+          </div>
       </div>
     </article>
 
