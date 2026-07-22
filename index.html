@@ -110,6 +110,31 @@
     .pub-year:first-of-type { margin-top: 0.5em; }
     .pub-year-num { font-weight: bold; font-size: 1.1em; }
 
+
+    /* --- Research tag cloud --- */
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 0.8em 0 1.2em; }
+    .tag-cloud-item {
+        display: inline-block; padding: 4px 14px; border-radius: 20px;
+        background: #f0f4fa; color: #224b8d; text-decoration: none;
+        transition: all 0.2s; border: 1px solid #dde6f0;
+    }
+    .tag-cloud-item:hover { background: #224b8d; color: #fff; transform: scale(1.05); }
+
+    /* --- BibTeX link --- */
+    .bib-link { color: #6b6b6b; font-size: 0.85em; text-decoration: none; }
+    .bib-link:hover { color: #224b8d; text-decoration: underline; }
+    .bib-dl { color: #224b8d; font-size: 0.85em; text-decoration: none; }
+    .bib-dl:hover { text-decoration: underline; }
+
+    /* --- Copy toast --- */
+    .bib-toast {
+        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+        background: #224b8d; color: #fff; padding: 8px 20px; border-radius: 20px;
+        font-size: 0.85em; z-index: 999; opacity: 0; transition: opacity 0.3s;
+        pointer-events: none;
+    }
+    .bib-toast.show { opacity: 1; }
+
     /* --- Responsive --- */
     @media (max-width: 768px) {
       .lang-toggle { margin: 8px auto; }
@@ -243,55 +268,56 @@
           <p><span class="anchor" id="publications"></span></p>
           <h1><i class="fas fa-file-alt" style="margin-right:8px;"></i> <span class="lang-zh">学术论文</span><span class="lang-en">Publications</span></h1>
           <p style="margin-top:-0.3em;color:#888;font-size:0.9em;">
-            <span class="lang-zh">40+ 篇论文 · 含 PDF 链接</span>
-            <span class="lang-en">40+ papers · PDF links available</span>
+            <span class="lang-zh">40+ 篇论文 · 含 PDF / BibTeX 链接</span>
+            <span class="lang-en">40+ papers · PDF &amp; BibTeX available</span>
+            <span style="margin-left:12px;"><a href="papers/publications.bib" target="_blank" class="bib-dl"><i class="fa fa-download"></i> <span class="lang-zh">全部 BibTeX</span><span class="lang-en">All BibTeX</span></a></span>
           </p>
 
           <!-- 2026 -->
           <div class="pub-year">📅 <span class="pub-year-num">2026</span></div>
           <ol start="1">
-            <li>Tingting Bao, <strong>Bifan Wei</strong>, Bo Li, Lingling Zhang, Hong Peng, Xiaoqing Zhang, Jun Liu. Spiking Neural P Systems Incorporating Winner-Take-All Mechanism. <em>Information and Computation</em>, pp.105472, 2026. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2026_WTASNP_IC.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Xin Jiang, Hengyang Ding, Zhongmin Cai, Jun Liu. Reasoning Step by Step via a Neural-Symbolic Geometry Problem Solver. <em>Pattern Recognition</em>, Vol.171, pp.112261, 2026. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2026_NS-GPS_PR.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Lingling Zhang, Xin Jiang, Hengyang Ding, Jun Liu. GeoTree: A Dynamic Tree-based Geometry Problem Solver through LLM-Symbolic Reasoning. <em>IEEE Transactions on Multimedia</em>, 2026. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2026_GeoTree_TMM.pdf" target="_blank">[PDF]</a></li>
+            <li>Tingting Bao, <strong>Bifan Wei</strong>, Bo Li, Lingling Zhang, Hong Peng, Xiaoqing Zhang, Jun Liu. Spiking Neural P Systems Incorporating Winner-Take-All Mechanism. <em>Information and Computation</em>, pp.105472, 2026. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2026_WTASNP_IC.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('bao2026wnp')" class="bib-link">[BibTeX]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Xin Jiang, Hengyang Ding, Zhongmin Cai, Jun Liu. Reasoning Step by Step via a Neural-Symbolic Geometry Problem Solver. <em>Pattern Recognition</em>, Vol.171, pp.112261, 2026. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2026_NS-GPS_PR.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('wang2026nsgps')" class="bib-link">[BibTeX]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Lingling Zhang, Xin Jiang, Hengyang Ding, Jun Liu. GeoTree: A Dynamic Tree-based Geometry Problem Solver through LLM-Symbolic Reasoning. <em>IEEE Transactions on Multimedia</em>, 2026. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2026_GeoTree_TMM.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('wang2026geotree')" class="bib-link">[BibTeX]</a></li>
           </ol>
 
           <!-- 2025 -->
           <div class="pub-year">📅 <span class="pub-year-num">2025</span></div>
           <ol start="4">
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Siyu He, Jiale Li, Qika Lin. GlFoMR: A Glance-then-Focus Multimodal Reasoning Framework for Diagram Question Answering. <em>SIGIR</em>, 2025. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2025_GlFoMR_SIGIR.pdf" target="_blank">[PDF]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Siyu He, Jiale Li, Qika Lin. GlFoMR: A Glance-then-Focus Multimodal Reasoning Framework for Diagram Question Answering. <em>SIGIR</em>, 2025. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2025_GlFoMR_SIGIR.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('wang2025glfomr')" class="bib-link">[BibTeX]</a></li>
           </ol>
 
           <!-- 2024 -->
           <div class="pub-year">📅 <span class="pub-year-num">2024</span></div>
           <ol start="5">
-            <li>Weiping Fu, <strong>Bifan Wei</strong>, Jianxiang Hu, Zhongmin Cai, Jun Liu. QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation. <em>EMNLP</em>, 2024. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2024_QGEval_EMNLP.pdf" target="_blank">[PDF]</a> <a href="https://arxiv.org/abs/2406.05707" target="_blank">[arXiv]</a></li>
-            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu. RTRL: Relation-aware Transformer with Reinforcement Learning for Deep Question Generation. <em>Knowledge-Based Systems</em>, Vol.300, pp.112120, 2024. <span class="tag tag-ccf-c">CCF C</span> <a href="papers/2024_RTRL_KBS.pdf" target="_blank">[PDF]</a></li>
+            <li>Weiping Fu, <strong>Bifan Wei</strong>, Jianxiang Hu, Zhongmin Cai, Jun Liu. QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation. <em>EMNLP</em>, 2024. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2024_QGEval_EMNLP.pdf" target="_blank">[PDF]</a> <a href="https://arxiv.org/abs/2406.05707" target="_blank">[arXiv]</a> <a href="#" onclick="return copyBib('fu2024qgeval')" class="bib-link">[BibTeX]</a></li>
+            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu. RTRL: Relation-aware Transformer with Reinforcement Learning for Deep Question Generation. <em>Knowledge-Based Systems</em>, Vol.300, pp.112120, 2024. <span class="tag tag-ccf-c">CCF C</span> <a href="papers/2024_RTRL_KBS.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('zeng2024rtrl')" class="bib-link">[BibTeX]</a></li>
           </ol>
 
           <!-- 2023 -->
           <div class="pub-year">📅 <span class="pub-year-num">2023</span></div>
           <ol start="7">
-            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu, Weiping Fu. Synthesize, Prompt and Transfer: Zero-shot Conversational Question Generation with Pre-trained Language Model. <em>ACL</em> (Long Papers), 2023. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2023_SPARTA_ACL.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Jiaxin Wang, Qianying Wang. DisAVR: Disentangled Adaptive Visual Reasoning Network for Diagram Question Answering. <em>IEEE Transactions on Image Processing</em>, Vol.32, pp.3846–3857, 2023. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2023_DisAVR_TIP.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Qika Lin, Lingling Zhang, Yaqiang Wu. Spatial-Semantic Collaborative Graph Network for Textbook Question Answering. <em>IEEE Transactions on Circuits and Systems for Video Technology</em>, Vol.33(7), pp.3214–3228, 2023. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2023_SSCGN_TCSVT.pdf" target="_blank">[PDF]</a></li>
+            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu, Weiping Fu. Synthesize, Prompt and Transfer: Zero-shot Conversational Question Generation with Pre-trained Language Model. <em>ACL</em> (Long Papers), 2023. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2023_SPARTA_ACL.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('zeng2023sparta')" class="bib-link">[BibTeX]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Jiaxin Wang, Qianying Wang. DisAVR: Disentangled Adaptive Visual Reasoning Network for Diagram Question Answering. <em>IEEE Transactions on Image Processing</em>, Vol.32, pp.3846–3857, 2023. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2023_DisAVR_TIP.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('wang2023disavr')" class="bib-link">[BibTeX]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Qika Lin, Lingling Zhang, Yaqiang Wu. Spatial-Semantic Collaborative Graph Network for Textbook Question Answering. <em>IEEE Transactions on Circuits and Systems for Video Technology</em>, Vol.33(7), pp.3214–3228, 2023. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2023_SSCGN_TCSVT.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('wang2023sscgn')" class="bib-link">[BibTeX]</a></li>
           </ol>
 
           <!-- 2021 -->
           <div class="pub-year">📅 <span class="pub-year-num">2021</span></div>
           <ol start="10">
-            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Faceted Text Segmentation via Multi-Task Learning. <em>IEEE Transactions on Neural Networks and Learning Systems</em>, Vol.32(9), pp.3846–3857, 2021. <span class="tag tag-jcr-q1">JCR Q1</span> <a href="papers/2021_FTS_TNNLS.pdf" target="_blank">[PDF]</a></li>
+            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Faceted Text Segmentation via Multi-Task Learning. <em>IEEE Transactions on Neural Networks and Learning Systems</em>, Vol.32(9), pp.3846–3857, 2021. <span class="tag tag-jcr-q1">JCR Q1</span> <a href="papers/2021_FTS_TNNLS.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('wu2021fts')" class="bib-link">[BibTeX]</a></li>
           </ol>
 
           <!-- 2020 -->
           <div class="pub-year">📅 <span class="pub-year-num">2020</span></div>
           <ol start="11">
-            <li>Ma Kexin, <strong>Bifan Wei</strong>, Jun Liu, et al. 知识主题间先序关系挖掘. <em>大数据</em>, Vol.6(6), pp.26–39, 2020. <a href="papers/2020_KPO_BigData.pdf" target="_blank">[PDF]</a></li>
+            <li>Ma Kexin, <strong>Bifan Wei</strong>, Jun Liu, et al. 知识主题间先序关系挖掘. <em>大数据</em>, Vol.6(6), pp.26–39, 2020. <a href="papers/2020_KPO_BigData.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('ma2020kpo')" class="bib-link">[BibTeX]</a></li>
           </ol>
 
           <!-- 2018 -->
           <div class="pub-year">📅 <span class="pub-year-num">2018</span></div>
           <ol start="12">
-            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Facet Annotation by Extending CNN with a Matching Strategy. <em>Neural Computation</em>, Vol.30(6), pp.1647–1672, 2018. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2018_FACM_NeuralComput.pdf" target="_blank">[PDF]</a></li>
+            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Facet Annotation by Extending CNN with a Matching Strategy. <em>Neural Computation</em>, Vol.30(6), pp.1647–1672, 2018. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2018_FACM_NeuralComput.pdf" target="_blank">[PDF]</a> <a href="#" onclick="return copyBib('wu2018facet')" class="bib-link">[BibTeX]</a></li>
           </ol>
 
           <p style="margin-top:0.5em;">
@@ -413,5 +439,67 @@
     }
   </script>
 
+
+    // BibTeX copy-to-clipboard
+    var BIB_DATA = null;
+    function loadBibData() {
+        if (BIB_DATA) return Promise.resolve(BIB_DATA);
+        return fetch("papers/publications.bib").then(function(r) { return r.text(); }).then(function(t) {
+            // Parse into a map of key -> entry text
+            var map = {};
+            var entries = t.split(/@\w+\{/);
+            for (var i = 1; i < entries.length; i++) {
+                var keyEnd = entries[i].indexOf(",");
+                if (keyEnd < 0) continue;
+                var key = entries[i].substring(0, keyEnd).trim();
+                map[key] = "@" + entries[i].split("@")[0]; // re-add the split-off prefix
+                // Also trim braces
+                if (map[key].endsWith("}")) map[key] = map[key].substring(0, map[key].length - 1) + "}";
+            }
+            BIB_DATA = map;
+            return map;
+        });
+    }
+    function copyBib(key) {
+        loadBibData().then(function(map) {
+            var text = map[key];
+            if (!text) { alert("BibTeX not found: " + key); return; }
+            navigator.clipboard.writeText(text).then(function() {
+                showBibToast("Copied: " + key);
+            });
+        });
+        return false;
+    }
+    function showBibToast(msg) {
+        var el = document.getElementById("bib-toast");
+        if (!el) {
+            el = document.createElement("div");
+            el.id = "bib-toast";
+            el.className = "bib-toast";
+            document.body.appendChild(el);
+        }
+        el.textContent = msg;
+        el.classList.add("show");
+        setTimeout(function() { el.classList.remove("show"); }, 2000);
+    }
+
 </body>
 </html>
+
+          <!-- ========== Research Interests ========== -->
+          <h1 style="margin-top:1.5em;"><i class="fas fa-tags" style="margin-right:8px;"></i> <span class="lang-zh">研究方向</span><span class="lang-en">Research Interests</span></h1>
+          <div class="tag-cloud">
+            <a href="https://scholar.google.com/citations?user=G0DQL4YAAAAJ&hl=en#" target="_blank" class="tag-cloud-item" style="font-size:1.2em;">Knowledge Graph</a>
+            <a href="https://scholar.google.com/scholar?q=smart+education+knowledge+engineering" target="_blank" class="tag-cloud-item" style="font-size:1.1em;">Smart Education</a>
+            <a href="https://scholar.google.com/scholar?q=question+generation+NLP" target="_blank" class="tag-cloud-item" style="font-size:1.1em;">Question Generation</a>
+            <a href="https://scholar.google.com/scholar?q=multimodal+reasoning+diagram" target="_blank" class="tag-cloud-item" style="font-size:1.05em;">Multimodal Reasoning</a>
+            <a href="https://scholar.google.com/scholar?q=geometry+problem+solving+neural+symbolic" target="_blank" class="tag-cloud-item" style="font-size:0.95em;">Geometry Solving</a>
+            <a href="https://scholar.google.com/scholar?q=text+segmentation+facet+mining" target="_blank" class="tag-cloud-item" style="font-size:0.95em;">Text Segmentation</a>
+            <a href="https://scholar.google.com/scholar?q=knowledge+graph+ontology+engineering" target="_blank" class="tag-cloud-item" style="font-size:1.1em;">Knowledge Engineering</a>
+            <a href="https://scholar.google.com/scholar?q=conversational+QA+question+answering" target="_blank" class="tag-cloud-item" style="font-size:0.95em;">Question Answering</a>
+            <a href="https://scholar.google.com/scholar?q=RDF+conflict+resolution+data+integration" target="_blank" class="tag-cloud-item" style="font-size:0.85em;">Data Integration</a>
+            <a href="https://scholar.google.com/scholar?q=intelligent+tutoring+system+AI+education" target="_blank" class="tag-cloud-item" style="font-size:1.0em;">Intelligent Tutoring</a>
+            <a href="https://scholar.google.com/scholar?q=spiking+neural+P+system+membrane+computing" target="_blank" class="tag-cloud-item" style="font-size:0.85em;">Membrane Computing</a>
+          </div>
+
+          <!-- ========== News ========== -->
