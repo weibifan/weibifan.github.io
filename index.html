@@ -528,6 +528,16 @@
       });
     });
 
+    // Auto-detect browser language on load
+    (function() {
+      var lang = navigator.language || navigator.userLanguage;
+      if (lang && lang.indexOf('en') === 0) {
+        document.body.classList.add('show-en');
+        document.getElementById('langZh').className = 'inactive-lang';
+        document.getElementById('langEn').className = 'active-lang';
+      }
+    })();
+
     // Language toggle
     function toggleLang() {
       var body = document.body;
