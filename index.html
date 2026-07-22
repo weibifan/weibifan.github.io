@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>魏笔凡 (Bifan Wei) - Researcher Fellow, Xi'an Jiaotong University</title>
   <meta name="description" content="Bifan Wei (魏笔凡), Researcher Fellow at School of Continuing Education, Xi'an Jiaotong University. Research: knowledge engineering, big data, smart education.">
-  <meta name="keywords" content="Bifan Wei, 魏笔凡, Xi'an Jiaotong University, 西安交通大学, knowledge engineering, 知识工程, smart education, 智慧教育">
+  <meta name="keywords" content="Bifan Wei, 魏笔凡, Xi'an Jiaotong University, 西安交通大学, knowledge engineering, 知识工程, smart education, 智慧教育, knowledge graph, NLP">
   <meta name="author" content="Bifan Wei (魏笔凡)">
 
   <!-- Open Graph -->
@@ -23,7 +23,6 @@
   <!-- Google / Bing Verification -->
   <meta name="google-site-verification" content="googled910351cc8e8e1cc">
   <meta name="google-site-verification" content="MmCUAQJMqgc46UJWxfPBesRJD98NerthpVSqem4Uw0o">
-  <!-- <meta name="msvalidate.01" content=""> -->
 
   <!-- JSON-LD Structured Data (Schema.org Person) -->
   <script type="application/ld+json">
@@ -55,6 +54,68 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="icon" href="images/profile.jpg">
+  <style>
+    /* --- Language Toggle --- */
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+      padding: 4px 10px;
+      background: #f0f2f5;
+      border-radius: 20px;
+      font-size: 0.82em;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .lang-toggle:hover { background: #e4e7eb; }
+    .lang-toggle .sep { color: #ccc; padding: 0 2px; }
+    .lang-toggle .active-lang { color: #224b8d; font-weight: bold; }
+    .lang-toggle .inactive-lang { color: #999; }
+    .greedy-nav { gap: 8px; }
+
+    /* --- Language visibility --- */
+    .lang-en { display: none; }
+    body.show-en .lang-zh { display: none; }
+    body.show-en .lang-en { display: inline; }
+    body.show-en .lang-en-block { display: block; }
+    body.show-en .lang-en-flex { display: flex; }
+    body:not(.show-en) .lang-en-block { display: none; }
+    body:not(.show-en) .lang-en-flex { display: none; }
+    .lang-en-block { display: none; }
+
+    /* --- Section header bilingual --- */
+    .section-header-en { color: #888; font-weight: normal; font-size: 0.65em; display: block; }
+
+    /* --- Sidebar stats --- */
+    .sidebar-stats { margin-top: 0.8em; padding-top: 0.8em; border-top: 1px solid #eee; font-size: 0.82em; line-height: 1.7; }
+    .sidebar-stats .num { font-weight: bold; color: #224b8d; font-size: 1.1em; }
+    .sidebar-stats .label { color: #777; }
+
+    /* --- CCF tags --- */
+    .tag { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 0.75em; font-weight: bold; margin-left: 4px; }
+    .tag-ccf-a { background: #ffd7d7; color: #c41e1e; }
+    .tag-ccf-b { background: #d7e8ff; color: #1a5cb5; }
+    .tag-ccf-c { background: #e8f5e9; color: #2e7d32; }
+    .tag-jcr-q1 { background: #fff3cd; color: #856404; }
+
+    /* --- News / Updates --- */
+    .news-item { display: flex; gap: 12px; margin-bottom: 0.6em; padding: 6px 10px; background: #fafbfc; border-radius: 6px; border-left: 3px solid #224b8d; }
+    .news-date { white-space: nowrap; color: #888; font-size: 0.85em; min-width: 60px; }
+    .news-text { color: #494e52; font-size: 0.92em; }
+
+    /* --- Paper year groups --- */
+    .pub-year { margin-top: 1.2em; font-size: 1.05em; color: #224b8d; border-bottom: 1px dashed #e0e0e0; padding-bottom: 4px; }
+    .pub-year:first-of-type { margin-top: 0.5em; }
+    .pub-year-num { font-weight: bold; font-size: 1.1em; }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .lang-toggle { margin: 8px auto; }
+      .news-item { flex-direction: column; gap: 2px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -67,18 +128,24 @@
             <i class="fas fa-bars"></i>
           </button>
           <ul class="visible-links" id="navLinks">
-            <li class="masthead__menu-item"><a href="#about-me">关于我</a></li>
-            <li class="masthead__menu-item"><a href="#publications">学术论文</a></li>
-            <li class="masthead__menu-item"><a href="#projects">科研项目</a></li>
-            <li class="masthead__menu-item"><a href="#awards">荣誉奖励</a></li>
-            <li class="masthead__menu-item"><a href="#teaching">讲授课程</a></li>
+            <li class="masthead__menu-item"><a href="#about-me"><span class="lang-zh">关于我</span><span class="lang-en">About</span></a></li>
+            <li class="masthead__menu-item"><a href="#news"><span class="lang-zh">最新动态</span><span class="lang-en">News</span></a></li>
+            <li class="masthead__menu-item"><a href="#publications"><span class="lang-zh">学术论文</span><span class="lang-en">Publications</span></a></li>
+            <li class="masthead__menu-item"><a href="#projects"><span class="lang-zh">科研项目</span><span class="lang-en">Projects</span></a></li>
+            <li class="masthead__menu-item"><a href="#awards"><span class="lang-zh">荣誉奖励</span><span class="lang-en">Awards</span></a></li>
+            <li class="masthead__menu-item"><a href="#teaching"><span class="lang-zh">讲授课程</span><span class="lang-en">Teaching</span></a></li>
           </ul>
+          <div class="lang-toggle" id="langToggle" onclick="toggleLang()">
+            <span class="active-lang" id="langZh">中文</span>
+            <span class="sep">|</span>
+            <span class="inactive-lang" id="langEn">EN</span>
+          </div>
         </nav>
       </div>
     </div>
   </div>
 
-  <!-- ========== MAIN LAYOUT (SIDEBAR + CONTENT) ========== -->
+  <!-- ========== MAIN LAYOUT ========== -->
   <div id="main" role="main">
 
     <!-- ===== SIDEBAR ===== -->
@@ -95,8 +162,8 @@
 
         <div class="author__urls-wrapper">
           <ul class="author__urls social-icons">
-            <li><div style="white-space: normal; margin-bottom: 0.5em;">Xi'an Jiaotong University</div></li>
-            <li><div style="white-space: normal; margin-bottom: 1em;">Researcher Fellow, School of Continuing Education</div></li>
+            <li><div style="white-space: normal; margin-bottom: 0.5em;"><span class="lang-zh">西安交通大学</span><span class="lang-en">Xi'an Jiaotong University</span></div></li>
+            <li><div style="white-space: normal; margin-bottom: 1em;"><span class="lang-zh">研究员，继续教育学院</span><span class="lang-en">Researcher Fellow, School of Continuing Education</span></div></li>
             <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Xi'an, Shaanxi, China</li>
             <li><a href="mailto:weibifan@xjtu.edu.cn"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
             <li><a href="https://github.com/weibifan"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
@@ -107,6 +174,14 @@
           </ul>
         </div>
 
+        <!-- Citation Stats -->
+        <div class="sidebar-stats">
+          <div><span class="num">40+</span> <span class="label lang-zh">论文</span><span class="label lang-en">papers</span></div>
+          <div><span class="num">7</span> <span class="label lang-zh">国家自然科学基金</span><span class="label lang-en">NSFC projects</span></div>
+          <div><span class="num">3</span> <span class="label lang-zh">省部级一等奖</span><span class="label lang-en">provincial awards</span></div>
+          <div><span class="num">10+</span> <span class="label lang-zh">授权发明专利</span><span class="label lang-en">patents</span></div>
+          <div style="margin-top:6px;"><span class="num">1</span> <span class="label lang-zh">学术专著</span><span class="label lang-en">monograph</span></div>
+        </div>
       </div>
     </div>
 
@@ -116,73 +191,162 @@
       <div class="page__inner-wrap">
         <section class="page__content" itemprop="text">
 
-          <!-- About Me -->
+          <!-- ========== About Me ========== -->
           <p><span class="anchor" id="about-me"></span></p>
 
-          <p><strong>魏笔凡（Bifan Wei）</strong>，工学博士，西安交通大学继续教育学院研究员，硕士生导师。隶属于陕西省大数据知识工程重点实验室、西安交通大学跨媒体知识融合与工程应用研究所、大数据算法与分析技术国家工程实验室。</p>
+          <div class="lang-zh">
+            <p><strong>魏笔凡（Bifan Wei）</strong>，工学博士，西安交通大学继续教育学院研究员，硕士生导师。隶属于陕西省大数据知识工程重点实验室、西安交通大学跨媒体知识融合与工程应用研究所、大数据算法与分析技术国家工程实验室。</p>
 
-          <p>主持2项国家自然科学基金面上项目、2项国家重点研发计划子课题、2项国家自然科学基金重点课题等国家级课题。在ACL、EMNLP、WWW、ISWC、DASFAA、IEEE TKDE、IEEE TIP、IEEE TNNLS、IEEE CSVT、Neural Computation、Information Sciences等国际会议与期刊上发表论文40多篇，出版学术专著1部，授权发明专利10余项（含国际专利1项）。获陕西省自然科学一等奖、陕西省技术发明一等奖、中国自动化学会科技进步特等奖。</p>
+            <p>主持2项国家自然科学基金面上项目、2项国家重点研发计划子课题、2项国家自然科学基金重点课题等国家级课题。在ACL、EMNLP、WWW、ISWC、DASFAA、IEEE TKDE、IEEE TIP、IEEE TNNLS、IEEE CSVT、Neural Computation、Information Sciences等国际会议与期刊上发表论文40多篇，出版学术专著1部，授权发明专利10余项（含国际专利1项）。获陕西省自然科学一等奖、陕西省技术发明一等奖、中国自动化学会科技进步特等奖。</p>
+          </div>
 
-          <!-- Publications -->
-          <h1 id="publications"><i class="fas fa-file-alt" style="margin-right:8px;"></i> 学术论文</h1>
+          <div class="lang-en-block">
+            <p><strong>Bifan Wei</strong> received the Ph.D. degree in computer science from Xi'an Jiaotong University, China. He is currently a <strong>Researcher Fellow</strong> at the School of Continuing Education, Xi'an Jiaotong University. He is a member of the Shaanxi Province Key Laboratory of Big Data Knowledge Engineering, the Institute of Cross-Media Knowledge Fusion and Engineering Application, and the National Engineering Laboratory for Big Data Algorithms and Analysis Technologies.</p>
 
-          <ol>
-            <li>Tingting Bao, <strong>Bifan Wei</strong>, Bo Li, Lingling Zhang, Hong Peng, Xiaoqing Zhang, Jun Liu. Spiking Neural P Systems Incorporating Winner-Take-All Mechanism. <em>Information and Computation</em>, pp.105472, 2026. (CCF A) <a href="papers/2026_WTASNP_IC.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Xin Jiang, Hengyang Ding, Zhongmin Cai, Jun Liu. Reasoning Step by Step via a Neural-Symbolic Geometry Problem Solver. <em>Pattern Recognition</em>, Vol.171, pp.112261, 2026. (CCF B) <a href="papers/2026_NS-GPS_PR.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Lingling Zhang, Xin Jiang, Hengyang Ding, Jun Liu. GeoTree: A Dynamic Tree-based Geometry Problem Solver through LLM-Symbolic Reasoning. <em>IEEE Transactions on Multimedia</em>, 2026. (CCF B) <a href="papers/2026_GeoTree_TMM.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Siyu He, Jiale Li, Qika Lin. GlFoMR: A Glance-then-Focus Multimodal Reasoning Framework for Diagram Question Answering. <em>SIGIR</em>, 2025. (CCF A) <a href="papers/2025_GlFoMR_SIGIR.pdf" target="_blank">[PDF]</a></li>
-            <li>Weiping Fu, <strong>Bifan Wei</strong>, Jianxiang Hu, Zhongmin Cai, Jun Liu. QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation. <em>EMNLP</em>, 2024. (CCF B) <a href="papers/2024_QGEval_EMNLP.pdf" target="_blank">[PDF]</a> <a href="https://arxiv.org/abs/2406.05707" target="_blank">[arXiv]</a></li>
-            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu. RTRL: Relation-aware Transformer with Reinforcement Learning for Deep Question Generation. <em>Knowledge-Based Systems</em>, Vol.300, pp.112120, 2024. (CCF C) <a href="papers/2024_RTRL_KBS.pdf" target="_blank">[PDF]</a></li>
-            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu, Weiping Fu. Synthesize, Prompt and Transfer: Zero-shot Conversational Question Generation with Pre-trained Language Model. <em>ACL</em> (Long Papers), 2023. (CCF A) <a href="papers/2023_SPARTA_ACL.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Jiaxin Wang, Qianying Wang. DisAVR: Disentangled Adaptive Visual Reasoning Network for Diagram Question Answering. <em>IEEE Transactions on Image Processing</em>, Vol.32, pp.3846–3857, 2023. (CCF A) <a href="papers/2023_DisAVR_TIP.pdf" target="_blank">[PDF]</a></li>
-            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Qika Lin, Lingling Zhang, Yaqiang Wu. Spatial-Semantic Collaborative Graph Network for Textbook Question Answering. <em>IEEE Transactions on Circuits and Systems for Video Technology</em>, Vol.33(7), pp.3214–3228, 2023. (CCF B) <a href="papers/2023_SSCGN_TCSVT.pdf" target="_blank">[PDF]</a></li>
-            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Faceted Text Segmentation via Multi-Task Learning. <em>IEEE Transactions on Neural Networks and Learning Systems</em>, Vol.32(9), pp.3846–3857, 2021. (JCR Q1) <a href="papers/2021_FTS_TNNLS.pdf" target="_blank">[PDF]</a></li>
-            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Facet Annotation by Extending CNN with a Matching Strategy. <em>Neural Computation</em>, Vol.30(6), pp.1647–1672, 2018. (CCF B) <a href="papers/2018_FACM_NeuralComput.pdf" target="_blank">[PDF]</a></li>
+            <p>He has led 2 general projects of the National Natural Science Foundation of China (NSFC), 2 sub-projects of the National Key R&D Program, and 2 key projects of NSFC. He has published <strong>40+ papers</strong> in leading venues including <em>ACL, EMNLP, WWW, ISWC, DASFAA, IEEE TKDE, IEEE TIP, IEEE TNNLS, IEEE CSVT, Neural Computation, Information Sciences</em>, etc. He holds 10+ granted invention patents and has authored 1 academic monograph. He received the <strong>First Prize of Shaanxi Natural Science Award</strong>, the <strong>First Prize of Shaanxi Technological Invention Award</strong>, and the <strong>Special Prize of CAA Science and Technology Progress Award</strong>.</p>
+          </div>
+
+          <!-- ========== News ========== -->
+          <p><span class="anchor" id="news"></span></p>
+          <h1><i class="fas fa-newspaper" style="margin-right:8px;"></i> <span class="lang-zh">最新动态</span><span class="lang-en">Latest News</span></h1>
+
+          <div class="news-item">
+            <span class="news-date">2026.07</span>
+            <span class="news-text lang-zh">🔥 Web-demo 上线：Typing Tutor IV 浏览器版（js-dos v8 + DOSBox）</span>
+            <span class="news-text lang-en">🔥 Web-demo launched: Typing Tutor IV runs in browser via js-dos v8</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.07</span>
+            <span class="news-text lang-zh">📄 论文被 <em>Pattern Recognition</em> 接收（CCF B）</span>
+            <span class="news-text lang-en">📄 Paper accepted by <em>Pattern Recognition</em> (CCF B)</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.06</span>
+            <span class="news-text lang-zh">📄 论文被 <em>IEEE TMM</em> 接收（CCF B）</span>
+            <span class="news-text lang-en">📄 Paper accepted by <em>IEEE Transactions on Multimedia</em> (CCF B)</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025</span>
+            <span class="news-text lang-zh">🏆 获吴文俊科技进步二等奖</span>
+            <span class="news-text lang-en">🏆 Won the Wu Wenjun AI Science & Technology Progress Award (2nd Prize)</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025</span>
+            <span class="news-text lang-zh">📄 GlFoMR 被 <em>SIGIR</em> 接收（CCF A）</span>
+            <span class="news-text lang-en">📄 GlFoMR accepted by <em>SIGIR</em> 2025 (CCF A)</span>
+          </div>
+
+          <!-- ========== Publications ========== -->
+          <p><span class="anchor" id="publications"></span></p>
+          <h1><i class="fas fa-file-alt" style="margin-right:8px;"></i> <span class="lang-zh">学术论文</span><span class="lang-en">Publications</span></h1>
+          <p style="margin-top:-0.3em;color:#888;font-size:0.9em;">
+            <span class="lang-zh">40+ 篇论文 · 含 PDF 链接</span>
+            <span class="lang-en">40+ papers · PDF links available</span>
+          </p>
+
+          <!-- 2026 -->
+          <div class="pub-year">📅 <span class="pub-year-num">2026</span></div>
+          <ol start="1">
+            <li>Tingting Bao, <strong>Bifan Wei</strong>, Bo Li, Lingling Zhang, Hong Peng, Xiaoqing Zhang, Jun Liu. Spiking Neural P Systems Incorporating Winner-Take-All Mechanism. <em>Information and Computation</em>, pp.105472, 2026. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2026_WTASNP_IC.pdf" target="_blank">[PDF]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Xin Jiang, Hengyang Ding, Zhongmin Cai, Jun Liu. Reasoning Step by Step via a Neural-Symbolic Geometry Problem Solver. <em>Pattern Recognition</em>, Vol.171, pp.112261, 2026. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2026_NS-GPS_PR.pdf" target="_blank">[PDF]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Yiming Ma, Lingling Zhang, Xin Jiang, Hengyang Ding, Jun Liu. GeoTree: A Dynamic Tree-based Geometry Problem Solver through LLM-Symbolic Reasoning. <em>IEEE Transactions on Multimedia</em>, 2026. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2026_GeoTree_TMM.pdf" target="_blank">[PDF]</a></li>
+          </ol>
+
+          <!-- 2025 -->
+          <div class="pub-year">📅 <span class="pub-year-num">2025</span></div>
+          <ol start="4">
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Siyu He, Jiale Li, Qika Lin. GlFoMR: A Glance-then-Focus Multimodal Reasoning Framework for Diagram Question Answering. <em>SIGIR</em>, 2025. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2025_GlFoMR_SIGIR.pdf" target="_blank">[PDF]</a></li>
+          </ol>
+
+          <!-- 2024 -->
+          <div class="pub-year">📅 <span class="pub-year-num">2024</span></div>
+          <ol start="5">
+            <li>Weiping Fu, <strong>Bifan Wei</strong>, Jianxiang Hu, Zhongmin Cai, Jun Liu. QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation. <em>EMNLP</em>, 2024. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2024_QGEval_EMNLP.pdf" target="_blank">[PDF]</a> <a href="https://arxiv.org/abs/2406.05707" target="_blank">[arXiv]</a></li>
+            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu. RTRL: Relation-aware Transformer with Reinforcement Learning for Deep Question Generation. <em>Knowledge-Based Systems</em>, Vol.300, pp.112120, 2024. <span class="tag tag-ccf-c">CCF C</span> <a href="papers/2024_RTRL_KBS.pdf" target="_blank">[PDF]</a></li>
+          </ol>
+
+          <!-- 2023 -->
+          <div class="pub-year">📅 <span class="pub-year-num">2023</span></div>
+          <ol start="7">
+            <li>Hongwei Zeng, <strong>Bifan Wei</strong>, Jun Liu, Weiping Fu. Synthesize, Prompt and Transfer: Zero-shot Conversational Question Generation with Pre-trained Language Model. <em>ACL</em> (Long Papers), 2023. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2023_SPARTA_ACL.pdf" target="_blank">[PDF]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Lingling Zhang, Jiaxin Wang, Qianying Wang. DisAVR: Disentangled Adaptive Visual Reasoning Network for Diagram Question Answering. <em>IEEE Transactions on Image Processing</em>, Vol.32, pp.3846–3857, 2023. <span class="tag tag-ccf-a">CCF A</span> <a href="papers/2023_DisAVR_TIP.pdf" target="_blank">[PDF]</a></li>
+            <li>Yaxian Wang, <strong>Bifan Wei</strong>, Jun Liu, Qika Lin, Lingling Zhang, Yaqiang Wu. Spatial-Semantic Collaborative Graph Network for Textbook Question Answering. <em>IEEE Transactions on Circuits and Systems for Video Technology</em>, Vol.33(7), pp.3214–3228, 2023. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2023_SSCGN_TCSVT.pdf" target="_blank">[PDF]</a></li>
+          </ol>
+
+          <!-- 2021 -->
+          <div class="pub-year">📅 <span class="pub-year-num">2021</span></div>
+          <ol start="10">
+            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Faceted Text Segmentation via Multi-Task Learning. <em>IEEE Transactions on Neural Networks and Learning Systems</em>, Vol.32(9), pp.3846–3857, 2021. <span class="tag tag-jcr-q1">JCR Q1</span> <a href="papers/2021_FTS_TNNLS.pdf" target="_blank">[PDF]</a></li>
+          </ol>
+
+          <!-- 2020 -->
+          <div class="pub-year">📅 <span class="pub-year-num">2020</span></div>
+          <ol start="11">
             <li>Ma Kexin, <strong>Bifan Wei</strong>, Jun Liu, et al. 知识主题间先序关系挖掘. <em>大数据</em>, Vol.6(6), pp.26–39, 2020. <a href="papers/2020_KPO_BigData.pdf" target="_blank">[PDF]</a></li>
           </ol>
 
-          <!-- Projects -->
-          <h1 id="projects"><i class="fas fa-flask" style="margin-right:8px;"></i> 科研项目</h1>
+          <!-- 2018 -->
+          <div class="pub-year">📅 <span class="pub-year-num">2018</span></div>
+          <ol start="12">
+            <li>Bei Wu, <strong>Bifan Wei</strong>, Jun Liu, et al. Facet Annotation by Extending CNN with a Matching Strategy. <em>Neural Computation</em>, Vol.30(6), pp.1647–1672, 2018. <span class="tag tag-ccf-b">CCF B</span> <a href="papers/2018_FACM_NeuralComput.pdf" target="_blank">[PDF]</a></li>
+          </ol>
 
-          <h3 style="margin-top:0.5em;">科研项目</h3>
+          <p style="margin-top:0.5em;">
+            <span class="lang-zh">完整列表：</span><span class="lang-en">Full list: </span>
+            <a href="https://scholar.google.com/citations?user=G0DQL4YAAAAJ" target="_blank">Google Scholar</a> ·
+            <a href="https://dblp.org/pid/120/9010.html" target="_blank">DBLP</a>
+          </p>
+
+          <!-- ========== Projects ========== -->
+          <p><span class="anchor" id="projects"></span></p>
+          <h1><i class="fas fa-flask" style="margin-right:8px;"></i> <span class="lang-zh">科研项目</span><span class="lang-en">Research Projects</span></h1>
+
+          <h3 style="margin-top:0.5em;">
+            <span class="lang-zh">科研项目</span>
+            <span class="lang-en">Funded Projects</span>
+          </h3>
           <ul>
-            <li>国家自然科学基金面上项目，物态图驱动的多模态物理题求解方法研究，2026.01~2029.12，62577043，主持。</li>
-            <li>国家自然科学基金重点项目的课题，面向智慧教育的多模态模型构建方法，2025.01~2029.12，62437002，主持。</li>
-            <li>国家重点研发计划子课题，面向智能协同的可解释教学方案自动生成系统，2023.01~2025.12，2022YFC3303604，主持。</li>
-            <li>国家自然科学基金面上项目，在线学习中深度测验题生成方法研究，2022.01~2025.12，62176209，主持。</li>
-            <li>国家自然科学基金重点项目的课题，多空间融合下的大学生个性化学习与智能教育服务关键技术研究，2020.01~2024.12，61937001，主持。</li>
-            <li>国家重点研发计划子课题，多源数字教育资源集成模型与聚合技术，2017.12~2020.11，2017YFB1401302，主持。</li>
-            <li>国家自然科学基金面上项目，多源RDF数据冲突消解方法研究，2017.01~2020.12，61672418，主持。</li>
+            <li><span class="lang-zh">国家自然科学基金面上项目，物态图驱动的多模态物理题求解方法研究，2026.01~2029.12，62577043，主持。</span><span class="lang-en">NSFC General Project, Physical State Graph-driven Multimodal Physics Problem Solving, 2026.01~2029.12, PI.</span></li>
+            <li><span class="lang-zh">国家自然科学基金重点项目的课题，面向智慧教育的多模态模型构建方法，2025.01~2029.12，62437002，主持。</span><span class="lang-en">NSFC Key Project Sub-topic, Multimodal Model Construction for Smart Education, 2025.01~2029.12, PI.</span></li>
+            <li><span class="lang-zh">国家重点研发计划子课题，面向智能协同的可解释教学方案自动生成系统，2023.01~2025.12，主持。</span><span class="lang-en">National Key R&D Sub-project, Explainable Teaching Plan Generation, 2023.01~2025.12, PI.</span></li>
+            <li><span class="lang-zh">国家自然科学基金面上项目，在线学习中深度测验题生成方法研究，2022.01~2025.12，62176209，主持。</span><span class="lang-en">NSFC General Project, Deep Question Generation for Online Learning, 2022.01~2025.12, PI.</span></li>
+            <li><span class="lang-zh">国家自然科学基金重点项目的课题，多空间融合下的大学生个性化学习与智能教育服务，2020.01~2024.12，61937001，主持。</span><span class="lang-en">NSFC Key Project Sub-topic, Personalized Learning & Smart Education, 2020.01~2024.12, PI.</span></li>
+            <li><span class="lang-zh">国家重点研发计划子课题，多源数字教育资源集成模型与聚合技术，2017.12~2020.11，主持。</span><span class="lang-en">National Key R&D Sub-project, Multi-source Educational Resource Integration, 2017.12~2020.11, PI.</span></li>
+            <li><span class="lang-zh">国家自然科学基金面上项目，多源RDF数据冲突消解方法研究，2017.01~2020.12，61672418，主持。</span><span class="lang-en">NSFC General Project, RDF Data Conflict Resolution, 2017.01~2020.12, PI.</span></li>
           </ul>
 
-          <h3>横向课题</h3>
+          <h3><span class="lang-zh">横向课题</span><span class="lang-en">Industry Projects</span></h3>
           <ul>
-            <li>人民网股份有限公司横向课题，政务领域多模态知识图谱构建，2024.07~2026.06，A202402，主持。</li>
-            <li>税友公司前沿探索横向课题，税务领域状态事件知识图谱的建模、构建与验证，2020.01~2020.12，主持。</li>
-            <li>百度公司前沿探索横向课题，海量RDF数据的冲突消解方法研究，2017.01~2017.12，201612112，主持。</li>
+            <li><span class="lang-zh">人民网，政务领域多模态知识图谱构建，2024.07~2026.06，主持。</span><span class="lang-en">People's Daily Online, Multimodal KG for Government Affairs, 2024.07~2026.06, PI.</span></li>
+            <li><span class="lang-zh">税友公司，税务领域状态事件知识图谱建模与验证，2020.01~2020.12，主持。</span><span class="lang-en">Shuiyou Inc., Tax Event Knowledge Graph, 2020.01~2020.12, PI.</span></li>
+            <li><span class="lang-zh">百度公司，海量RDF数据的冲突消解方法研究，2017.01~2017.12，主持。</span><span class="lang-en">Baidu Inc., RDF Data Conflict Resolution, 2017.01~2017.12, PI.</span></li>
           </ul>
 
-          <h3>教改项目</h3>
+          <h3><span class="lang-zh">教改项目</span><span class="lang-en">Educational Reform Projects</span></h3>
           <ul>
-            <li>陕西高等教育教学改革项目，跨平台学习支持系统构建方法研究——以西安交大继续教育学院为例，2021.10~2023.09，21JY001，主持。</li>
-            <li>陕西高等教育教学改革项目，海量课程资源云存储及资源库建设研究，2017.10~2019.09，17JY001，主持。</li>
+            <li><span class="lang-zh">陕西高等教育教学改革项目，跨平台学习支持系统构建，2021.10~2023.09，主持。</span><span class="lang-en">Shaanxi Higher Education Reform, Cross-platform Learning System, 2021.10~2023.09, PI.</span></li>
+            <li><span class="lang-zh">陕西高等教育教学改革项目，海量课程资源云存储及资源库建设，2017.10~2019.09，主持。</span><span class="lang-en">Shaanxi Higher Education Reform, Cloud Storage for Course Resources, 2017.10~2019.09, PI.</span></li>
           </ul>
 
-          <!-- Awards -->
-          <h1 id="awards"><i class="fas fa-trophy" style="margin-right:8px;"></i> 荣誉奖励</h1>
+          <!-- ========== Awards ========== -->
+          <p><span class="anchor" id="awards"></span></p>
+          <h1><i class="fas fa-trophy" style="margin-right:8px;"></i> <span class="lang-zh">荣誉奖励</span><span class="lang-en">Honors & Awards</span></h1>
+
           <ul>
-            <li><em>2025</em>，人工智能学会吴文俊科技进步二等奖，神经-符号协同的抽象图文推理技术及应用。完成人：张玲玲、武亚强、刘欢、<strong>魏笔凡</strong>、田锋、王茜莺、刘均、董怡翔、王璐妍、李睿、李辉、张未展、董博、闫彩霞、朱春强</li>
-            <li><em>2022</em>，陕西省自然科学一等奖，大数据知识工程理论、方法及重大应用。完成人：郑庆华、罗敏楠、董博、田锋、<strong>魏笔凡</strong>、刘均</li>
-            <li><em>2020</em>，中国自动化学会科学技术进步特等奖，知识森林个性化智能导学技术及其重大应用。完成人：郑庆华、杨宗凯、刘均、刘三女牙、<strong>魏笔凡</strong>、董博、赵敏、张未展、李国斌、田锋、刘智、张浩、周东波、罗敏楠、周晓敏、朱海萍、陈妍、周新运、锁志海、徐墨、刘俊</li>
-            <li><em>2018</em>，陕西技术发明奖一等奖，场景感知的知识地图导航移动学习关键技术及其应用。完成人：郑庆华、刘均、董博、张未展、<strong>魏笔凡</strong>、赵敏、李国斌、朱海萍、杜海鹏、李睿、锁志海</li>
+            <li><em>2025</em><span class="lang-zh">，人工智能学会吴文俊科技进步二等奖，神经-符号协同的抽象图文推理技术及应用。</span><span class="lang-en">Wu Wenjun AI Science & Technology Progress Award (2nd Prize).</span></li>
+            <li><em>2022</em><span class="lang-zh">，陕西省自然科学一等奖，大数据知识工程理论、方法及重大应用。</span><span class="lang-en">🥇 Shaanxi Natural Science Award (1st Prize) — Big Data Knowledge Engineering.</span></li>
+            <li><em>2020</em><span class="lang-zh">，中国自动化学会科学技术进步特等奖，知识森林个性化智能导学技术及其重大应用。</span><span class="lang-en">🥇 CAA Science and Technology Progress Award (Special Prize) — Knowledge Forest Intelligent Tutoring.</span></li>
+            <li><em>2018</em><span class="lang-zh">，陕西省技术发明一等奖，场景感知的知识地图导航移动学习关键技术及其应用。</span><span class="lang-en">🥇 Shaanxi Technological Invention Award (1st Prize) — Context-aware Mobile Learning.</span></li>
           </ul>
 
-          <!-- Teaching -->
-          <h1 id="teaching"><i class="fas fa-chalkboard-teacher" style="margin-right:8px;"></i> 讲授课程</h1>
+          <!-- ========== Teaching ========== -->
+          <p><span class="anchor" id="teaching"></span></p>
+          <h1><i class="fas fa-chalkboard-teacher" style="margin-right:8px;"></i> <span class="lang-zh">讲授课程</span><span class="lang-en">Teaching</span></h1>
+
           <ul>
-            <li><em>2026年秋</em>，计算机网络，32学时</li>
-            <li><em>2026年春</em>，数据库原理与应用，32学时</li>
-            <li><em>2026年秋</em>，数据结构，32学时</li>
+            <li><em><span class="lang-zh">2026年秋</span><span class="lang-en">2026 Fall</span></em><span class="lang-zh">，计算机网络，32学时</span><span class="lang-en">, Computer Networks, 32 hrs</span></li>
+            <li><em><span class="lang-zh">2026年春</span><span class="lang-en">2026 Spring</span></em><span class="lang-zh">，数据库原理与应用，32学时</span><span class="lang-en">, Database Systems, 32 hrs</span></li>
+            <li><em><span class="lang-zh">2026年秋</span><span class="lang-en">2026 Fall</span></em><span class="lang-zh">，数据结构，32学时</span><span class="lang-en">, Data Structures, 32 hrs</span></li>
           </ul>
 
         </section>
@@ -204,10 +368,10 @@
     });
 
     // Smooth scroll & close nav on link click
-    document.querySelectorAll('.masthead__menu-item a').forEach(link => {
+    document.querySelectorAll('.masthead__menu-item a').forEach(function(link) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        var target = document.querySelector(this.getAttribute('href'));
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -216,19 +380,34 @@
     });
 
     // Highlight active nav item on scroll
-    const sections = document.querySelectorAll('[id]');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(sec => {
-        const top = sec.offsetTop - 80;
-        if (window.scrollY >= top) {
+    var sections = document.querySelectorAll('[id]');
+    window.addEventListener('scroll', function() {
+      var current = '';
+      sections.forEach(function(sec) {
+        if (window.scrollY >= sec.offsetTop - 80) {
           current = sec.getAttribute('id');
         }
       });
-      document.querySelectorAll('.masthead__menu-item a').forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      document.querySelectorAll('.masthead__menu-item a').forEach(function(link) {
+        var href = link.getAttribute('href');
+        link.classList.toggle('active', href === '#' + current);
       });
     });
+
+    // Language toggle
+    function toggleLang() {
+      var body = document.body;
+      var zh = document.getElementById('langZh');
+      var en = document.getElementById('langEn');
+      body.classList.toggle('show-en');
+      if (body.classList.contains('show-en')) {
+        zh.className = 'inactive-lang';
+        en.className = 'active-lang';
+      } else {
+        zh.className = 'active-lang';
+        en.className = 'inactive-lang';
+      }
+    }
   </script>
 
 </body>
