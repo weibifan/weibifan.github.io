@@ -111,6 +111,15 @@
     .pub-year-num { font-weight: bold; font-size: 1.1em; }
 
 
+
+    /* --- Demo cards --- */
+    .demo-grid { display: flex; flex-wrap: wrap; gap: 16px; margin: 1em 0; }
+    .demo-card { flex: 1 1 280px; background: #fafbfc; border: 1px solid #eaecef; border-radius: 10px; overflow: hidden; transition: box-shadow 0.2s; }
+    .demo-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .demo-video { width: 100%; display: block; background: #000; }
+    .demo-info { padding: 10px 14px; font-size: 0.88em; line-height: 1.5; }
+    .demo-info strong { color: #333; }
+
     /* --- Research tag cloud --- */
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 0.8em 0 1.2em; }
     .tag-cloud-item {
@@ -159,6 +168,7 @@
             <li class="masthead__menu-item"><a href="#projects"><span class="lang-zh">科研项目</span><span class="lang-en">Projects</span></a></li>
             <li class="masthead__menu-item"><a href="#awards"><span class="lang-zh">荣誉奖励</span><span class="lang-en">Awards</span></a></li>
             <li class="masthead__menu-item"><a href="#teaching"><span class="lang-zh">讲授课程</span><span class="lang-en">Teaching</span></a></li>
+            <li class="masthead__menu-item"><a href="#demos"><span class="lang-zh">演示视频</span><span class="lang-en">Demos</span></a></li>
           </ul>
           <div class="lang-toggle" id="langToggle" onclick="toggleLang()">
             <span class="active-lang" id="langZh">中文</span>
@@ -377,6 +387,25 @@
             <li><em><span class="lang-zh">2026年春</span><span class="lang-en">2026 Spring</span></em><span class="lang-zh">，数据库原理与应用，32学时</span><span class="lang-en">, Database Systems, 32 hrs</span></li>
             <li><em><span class="lang-zh">2026年秋</span><span class="lang-en">2026 Fall</span></em><span class="lang-zh">，数据结构，32学时</span><span class="lang-en">, Data Structures, 32 hrs</span></li>
           </ul>
+          <!-- ========== Demos ========== -->
+          <p><span class="anchor" id="demos"></span></p>
+          <h1><i class="fas fa-video" style="margin-right:8px;"></i> <span class="lang-zh">项目演示</span><span class="lang-en">Project Demos</span></h1>
+          <div class="demo-grid">
+            <div class="demo-card">
+              <video class="demo-video" src="images/demos/cad-model.mp4" muted autoplay loop playsinline preload="none" poster=""></video>
+              <div class="demo-info">
+                <span class="lang-zh"><strong>工程图纸 → 3D 模型</strong> — 基于深度学习的 CAD 图纸自动三维重建</span>
+                <span class="lang-en"><strong>CAD Drawing → 3D Model</strong> — Deep learning based 3D reconstruction from engineering drawings</span>
+              </div>
+            </div>
+            <div class="demo-card">
+              <video class="demo-video" src="images/demos/text-model.mp4" muted autoplay loop playsinline preload="none"></video>
+              <div class="demo-info">
+                <span class="lang-zh"><strong>文本 → 3D 模型</strong> — 自然语言描述驱动的三维模型生成</span>
+                <span class="lang-en"><strong>Text → 3D Model</strong> — 3D model generation from natural language descriptions</span>
+              </div>
+            </div>
+          </div>
 
         </section>
       </div>
